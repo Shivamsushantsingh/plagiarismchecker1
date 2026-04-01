@@ -4,7 +4,7 @@
 
 This project is an **AI-powered Plagiarism Detection System** built using **Natural Language Processing (NLP)** techniques. It detects textual similarity between documents using **TF-IDF vectorization** and **Cosine Similarity**, enabling efficient identification of duplicate or plagiarized content.
 
----
+
 
 ## Key Features
 
@@ -15,7 +15,7 @@ This project is an **AI-powered Plagiarism Detection System** built using **Natu
 * Supports large datasets for training and testing
 * Model saving using Pickle for reuse
 
----
+
 
 ## Tech Stack
 
@@ -28,7 +28,7 @@ This project is an **AI-powered Plagiarism Detection System** built using **Natu
 * **Modeling:** TF-IDF + Cosine Similarity
 * **Dataset:** Custom dataset (`train_snli.txt`)
 
----
+
 
 ## Workflow
 
@@ -40,7 +40,7 @@ This project is an **AI-powered Plagiarism Detection System** built using **Natu
   * Training set (80%)
   * Testing set (20%)
 
----
+
 
 ### Text Preprocessing
 
@@ -50,7 +50,7 @@ This project is an **AI-powered Plagiarism Detection System** built using **Natu
 * Stopword removal
 * Cleaned text reconstruction
 
----
+
 
 ### Feature Engineering
 
@@ -58,7 +58,7 @@ This project is an **AI-powered Plagiarism Detection System** built using **Natu
 
   * **TF-IDF Vectorizer**
 
----
+
 
 ### Similarity Computation
 
@@ -67,7 +67,7 @@ This project is an **AI-powered Plagiarism Detection System** built using **Natu
   * **Cosine Similarity**
 * Compares input text with all training documents
 
----
+
 
 ###  Plagiarism Detection
 
@@ -80,7 +80,7 @@ This project is an **AI-powered Plagiarism Detection System** built using **Natu
   * Plagiarism status
   * Most similar document
 
----
+
 
 ## Model Evaluation
 
@@ -91,24 +91,24 @@ This project is an **AI-powered Plagiarism Detection System** built using **Natu
 
 Example Output:
 
-```
-Model Accuracy: 60.00%
-```
 
----
+Model Accuracy: 60.00%
+
+
+
 
 ## Demo Example
 
-```
+
 Input: "Machine learning powers modern technology"
 
 Output:
 Similarity Score: 0.82
 Plagiarism Detected: True
 Most Similar Document: <matched training text>
-```
 
----
+
+
 
 ## Installation
 
@@ -118,7 +118,7 @@ cd plagiarismchecker1
 pip install -r requirements.txt
 ```
 
----
+
 
 ##  Usage
 
@@ -126,7 +126,7 @@ pip install -r requirements.txt
 python plagiarism_checker.py
 ```
 
----
+
 
 ##  Project Structure
 
@@ -139,7 +139,7 @@ python plagiarism_checker.py
  ┗  plagiarism_checker.pkl
 ```
 
----
+
 
 ##  Model Saving
 
@@ -150,7 +150,7 @@ with open('plagiarism_checker.pkl', 'wb') as f:
     pickle.dump(...)
 ```
 
----
+
 
 ##  Dataset Statistics
 
@@ -159,7 +159,7 @@ with open('plagiarism_checker.pkl', 'wb') as f:
 * Testing Data: 20%
 * Vocabulary Size: Generated dynamically
 
----
+
 
 ##  Use Cases
 
@@ -168,7 +168,7 @@ with open('plagiarism_checker.pkl', 'wb') as f:
 * Assignment evaluation systems
 * Blog/article duplication analysis
 
----
+
 
 ##  Future Improvements
 
@@ -177,7 +177,7 @@ with open('plagiarism_checker.pkl', 'wb') as f:
 *  Web deployment using Flask/FastAPI
 *  Visualization dashboard
 
----
+
 
 ##  Contributing
 
