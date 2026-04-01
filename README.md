@@ -1,23 +1,25 @@
-# AI-Based Plagiarism Checker
+# AI-Based Plagiarism Detection System
 
 ##  Overview
 
-This project is an **AI-powered Plagiarism Detection System** built using **Natural Language Processing (NLP)** techniques. It detects textual similarity between documents using **TF-IDF vectorization** and **Cosine Similarity**, enabling efficient identification of duplicate or plagiarized content.
+This project is an **AI-powered plagiarism detection system** built using **Natural Language Processing (NLP)** techniques. It analyzes textual similarity between documents using **TF-IDF vectorization** and **Cosine Similarity** to identify potentially plagiarized content.
+
+The system is designed to efficiently compare large volumes of text and provide **similarity scores, plagiarism detection results, and nearest matching documents**.
 
 
 
-## Key Features
+##  Key Features
 
-* Detects plagiarism using similarity scoring
-* Generates real-time similarity percentage
-* NLP-based preprocessing (tokenization, stopword removal)
-* Efficient vector-based text comparison using TF-IDF
-* Supports large datasets for training and testing
-* Model saving using Pickle for reuse
+*  Detects plagiarism using similarity scoring
+*  Generates real-time similarity percentage
+*  NLP preprocessing (tokenization, stopword removal, cleaning)
+*  Efficient large-scale document comparison using TF-IDF
+*  Handles datasets with thousands of documents
+*  Model persistence using Pickle
 
 
 
-## Tech Stack
+##  Tech Stack
 
 * **Language:** Python
 * **Libraries:**
@@ -25,94 +27,92 @@ This project is an **AI-powered Plagiarism Detection System** built using **Natu
   * NLTK (Text preprocessing)
   * Scikit-learn (TF-IDF, similarity, evaluation)
   * NumPy (Numerical computations)
-* **Modeling:** TF-IDF + Cosine Similarity
-* **Dataset:** Custom dataset (`train_snli.txt`)
+* **Techniques:** TF-IDF, Cosine Similarity
+* **Dataset:** SNLI-based text dataset (`train_snli.txt`)
 
 
 
-## Workflow
+## System Workflow
 
-### Data Loading
+###  Data Processing
 
-* Reads dataset from `.txt` file
-* Splits into:
-
-  * Training set (80%)
-  * Testing set (20%)
+* Loads dataset from `.txt` file
+* Splits into training (80%) and testing (20%)
 
 
 
-### Text Preprocessing
+###  Text Preprocessing
 
-* Convert text to lowercase
-* Remove punctuation and numbers
+* Lowercasing
+* Removal of punctuation and numbers
 * Tokenization using NLTK
 * Stopword removal
-* Cleaned text reconstruction
+* Clean text reconstruction
 
 
 
-### Feature Engineering
+###  Feature Engineering
 
-* Converts text into numerical form using:
+* Converts text into numerical vectors using:
 
   * **TF-IDF Vectorizer**
 
 
 
-### Similarity Computation
+###  Similarity Computation
 
-* Uses:
+* Computes similarity using:
 
   * **Cosine Similarity**
 * Compares input text with all training documents
 
 
 
-###  Plagiarism Detection
+###  Plagiarism Detection Logic
 
-* Based on similarity threshold:
+* Uses threshold-based classification:
 
-  * Default threshold = **0.8**
+  * Default threshold: **0.5 (tuned for better performance)**
 * Outputs:
 
   * Similarity score
-  * Plagiarism status
+  * Plagiarism detection result
   * Most similar document
 
 
 
-## Model Evaluation
+##  Model Performance
 
-* Evaluated using test dataset
-* Metric used:
+| Metric          | Value           |
+| --------------- | --------------- |
+| Accuracy        | ~54% (baseline) |
+| Dataset Size    | ~367K documents |
+| Vocabulary Size | ~27K            |
 
-  * **Accuracy Score**
+###  Note:
 
-Example Output:
+* Lower accuracy is due to:
 
-
-Model Accuracy: 60.00%
-
-
-
-
-## Demo Example
+  * Use of **TF-IDF (lexical similarity only)**
+  
 
 
+
+##  Sample Output
+
+```id="xj7q3w"
 Input: "Machine learning powers modern technology"
 
-Output:
-Similarity Score: 0.82
-Plagiarism Detected: True
-Most Similar Document: <matched training text>
-
+Similarity Score: 0.41  
+Plagiarism Detected: False  
+Most Similar Document: "A teacher and students learning through technology"
+```
 
 
 
 ## Installation
 
-```bash
+```bash id="n2c6x1"
 git clone https://github.com/Shivamsushantsingh/plagiarismchecker1.git
 cd plagiarismchecker1
 pip install -r requirements.txt
@@ -120,18 +120,17 @@ pip install -r requirements.txt
 
 
 
-##  Usage
+## Usage
 
-```bash
+```bash id="7n7r5t"
 python plagiarism_checker.py
 ```
 
 
-
 ##  Project Structure
 
-```
-📦 plagiarismchecker1
+```id="qz0fuv"
+ plagiarismchecker1
  ┣  dataset
  ┃ ┗ train_snli.txt
  ┣  plagiarism_checker.py
@@ -143,45 +142,47 @@ python plagiarism_checker.py
 
 ##  Model Saving
 
-* Model is saved using **Pickle** for reuse:
-
-```python
+```python id="l0k3ds"
 with open('plagiarism_checker.pkl', 'wb') as f:
-    pickle.dump(...)
+    pickle.dump({
+        'vectorizer': vectorizer,
+        'tfidf_matrix': tfidf_train,
+        'threshold': threshold
+    }, f)
 ```
 
 
 
-##  Dataset Statistics
+##  Limitations
 
-* Total Documents: ~10,000
-* Training Data: 80%
-* Testing Data: 20%
-* Vocabulary Size: Generated dynamically
+* TF-IDF captures only **word-level similarity**, not semantic meaning
+* Dataset (SNLI) is not optimized for plagiarism detection
+* Performance depends heavily on threshold tuning
+
+---
+
+##  Future Improvements
+
+*  Implement **BERT / Sentence Transformers** for semantic similarity
+*  Add support for PDF/DOCX file inputs
+*  Build web interface using Flask/FastAPI
+*  Improve accuracy using domain-specific plagiarism datasets
+*  Optimize threshold using validation techniques
 
 
 
 ##  Use Cases
 
 * Academic plagiarism detection
-* Content originality checking
+* Content originality verification
 * Assignment evaluation systems
 * Blog/article duplication analysis
 
 
 
-##  Future Improvements
-
-*  Deep Learning models (BERT, Transformers)
-*  Support for PDF/DOCX files
-*  Web deployment using Flask/FastAPI
-*  Visualization dashboard
-
-
-
 ##  Contributing
 
-Contributions are welcome! Feel free to fork the repo and submit pull requests.
+Contributions are welcome! Feel free to fork the repository and submit pull requests.
 
----
+
 
